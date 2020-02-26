@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A simple restaurants app made with the vue js and django">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" type="image/png" href="/static/media/Logo_dcu_restaurants_2.png">
+
+    <!-- BOOTSTRAP LINKS -->
+   <link rel="stylesheet" href="/static/bootstrap-4.3.1-dist/css/bootstrap-grid.min.css">
+   <link rel="stylesheet" href="/static/bootstrap-4.3.1-dist/css/bootstrap.min.css">
+   <link rel="stylesheet" href="/static/bootstrap-4.3.1-dist/css/bootstrap-reboot.min.css">
+   <link rel="stylesheet" href="/static/bootstrap-4.3.1-dist/js/bootstrap.bundle.js">
+   <link rel="stylesheet" href="/static/bootstrap-4.3.1-dist/js/jquery.slim.min.js">
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="/static/css/find_restaurants.css">
+    <title>Find restaurants</title>
+</head>
+<body>
+
+    <!-- Add of an Header template -->
+    {% include "eatatdcu/header.html" %}
+    
+    <script type='text/javascript'>
+    </script>
+
+    <div id="find_restaurants">
+        <div id="find_restaurants_introduction">
+            <div class="container">
+                <div class="row card">
+                    <h1 class="col col-md-12 col-sm-12">Need to find a place to eat near DCU ?</h1>
+                    <!-- <div class="find_restaurants_introduction_about_eatatdcu col col-md-12 col-sm-12">
+                        <p>You're angry ? After a long day of work business of chemistry, you probably want to eat something good and tasty but you don't know where eat ?</p>
+                    </div> -->
+                    <div class="find_restaurants_search_section col col-md-12 col-sm-12">
+                        <div class="find_restaurants_search_introduction">
+                            <p>Come on and find the best restaurant at DCU in function of your preference !</p>
+                        </div>
+                        <form class="find_restaurants_search_form_campus" action="{% url 'eatatdcu:find_restaurants' %}" method="get">
+                            <div class="row">
+                                <div class="form_select_campus col-3">
+                                    <select name="form_campus_name">
+                                        <option value="indifferent">Indifferent</option>
+                                        <option value="glasnevin">Glasnevin</option>
+                                        <option value="st pats">St Pats</option>
+                                        <option value="dcu alpha">Dcu Alpha</option>
+                                        <option value="all hallows">All Hallows</option>
+                                    </select>
+                                </div>
+                                <div class="form_select_staff col-3">
+                                    <select name="form_staff">
+                                        <option value="anyone">Anyone</option>
+                                        <option value="staff_only">Staff Only</option>
+                                    </select>
+                                </div>
+                                <div class="form_select_specials col-3">
+                                    <label class="control-label" for="form_select_special_dishes">Special contain ?</label>
+                                    <input name="form_select_special_dishes" type="text" placeholder="Specific dishes" class="form-control">
+                                </div>
+                                <div class="form_select_submit col-3">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+
+                                <!-- <div class="all_btn col-3" >
+                                    <button type="button" class="btn btn-primary" @click="toggle_btn_class">Staff Only</button>
+                                    <button type="button" class="btn btn-outline-primary">Specials</button>
+                                </div> -->
+                                <!-- <div class="find_restaurants_search_form_input_border col-12">
+                                    Campus: <input class="find_restaurants_search_form_text" type="text" name="campus">
+                                </div>
+                                <div class="col-12">
+                                    <input class="find_restaurants_search_form_img" type="image" src="/static/media/logo/eat.png" alt="Submit" width="48" height="48">
+                                </div> -->
+                            </div>
+                        </form>
+                        <div class="find_restaurants_display_all_restaurants container-fluid">
+                            <table>
+                                <tbody>
+                                    <!-- boucle for -->
+                                    {% if restaurant_obj %}
+
+                                    {% for r in restaurant_obj %}
+
+                                    <div class="row restaurant_data_container">
+                                        <div class="restaurant_data_container_img_container col-3">
+                                            <img src="../../static/media/restaurants/{{ r.restaurant_id }}.jpg" class="img-fluid" alt="">
+                                        </div>
+                                        <div class="restaurant_data_container_detail col-2">
+                                            <p><b>Restaurant name: </b></p>
+                                            {{ r.name }}
+                                        </div>
+                                        <div class="restaurant_data_container_staff col-1">
+                                            <p><b>Staff Only:</b></p>
+                                            {{ r.staff_only }} 
+                                        </div>
+                                        <div class="restaurant_data_container_capacity col-2">
+                                            <p><b>Seats availables:</b></p>
+                                            {{ r.capacity }}
+                                        </div>
+                                        <div class="restaurant_data_container_campus col-2">
+                                            <p><b>Campus:</b></p>
+                                            {{ r.campus_name }}
+                                        </div>
+                                        <div class="restaurant_data_container_special col-2">
+                                            <p><b>Special:</b></p>
+                                            {{ r.specials }}
+                                        </div>
+                                    </div>
+
+                                    {% endfor %}
+                                    {% endif %}
+
+                                    
+                                    <!-- <tr>
+                                        <td>
+                                            <div style="height:250px;width:340px">
+                                                <img src="../../static/media/restaurants/1.jpg" alt="" class="img-fluid">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div>
+                                                <div style="min-width: 124px;max-width: 124px;min-height: 175px;position: relative;"></div>
+                                                <div></div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div>
+                                                <div style="min-width: 124px;max-width: 124px;min-height: 175px;position: relative;"></div>
+                                                <div></div>
+                                            </div>
+                                        </td>
+                                    </tr> -->
+                                    <!-- end boucle for -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Add of an Footer template -->    
+    {% include "eatatdcu/footer.html" %}
+
+    <script>
+        var find_restaurants = new Vue({
+            delimiters: ['[[', ']]'],
+            el: '#find_restaurants',
+            data: {
+                message: 'Hello Vue!'
+            },
+            methods: {
+                toggle_btn_class : function(event) {
+                    alert("here" + event);
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
+

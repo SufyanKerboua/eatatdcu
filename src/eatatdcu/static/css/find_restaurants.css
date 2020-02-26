@@ -1,0 +1,134 @@
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+}
+
+#find_restaurants {
+    text-align: center;
+    top: 130px;
+    width: 100%;
+}
+
+#find_restaurants h1{
+    font-size: 82px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #0a294b;
+    margin-top: 20px;
+}
+
+#find_restaurants #find_restaurants_introduction .card {
+    font-weight: 400;
+    border: 0;
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,1), 0 2px 10px 0 rgba(0,0,0,1);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,1), 0 2px 10px 0 rgba(0,0,0,1);
+    width: fit-content;
+    margin: auto;
+}
+
+#find_restaurants_introduction {
+    background-image: url('../media/background_find_restaurants.jpg');
+    background-repeat: repeat-y;
+    background-size: 100%;
+    padding-top: 200px;
+    color: black;
+    padding-bottom: 150px;
+}
+
+.find_restaurants_introduction_about_eatatdcu {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: auto;
+    max-width: 500px;
+}
+
+.find_restaurants_search_form_input_border {
+    padding: 0;
+}
+
+.find_restaurants_search_form_input_border input {
+    border: solid 1px;
+    border-radius: 5px;
+}
+
+/* ========================== */
+/* =      Form Section      = */
+/* ========================== */
+
+form {
+    border: solid 1px;
+    border-radius: 5px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    margin-bottom: 30px;
+}
+
+form div {
+    padding: 15px;
+}
+
+form div div {
+    float: left;
+    font-size: 26px;
+}
+
+.find_restaurants_search_form_text {
+    width: 170px;
+    height: 24px;
+    font-size: 22px;
+}
+
+.find_restaurants_search_form_img {
+    margin-top: -10px;
+}
+
+.find_restaurants_search_section {
+    /* border: solid 1px red; */
+    /* background-color: green; */
+    padding-bottom: 20px;
+}
+
+.find_restaurants_display_all_restaurants {
+    background-color:yellow ;
+    background-color: #E3E0D1;
+}
+
+.find_restaurants_display_all_restaurants p {
+    margin: 0;
+}
+
+.restaurant_data_container {
+    border: solid 1px #5C0D11;
+    border-radius: 5px;
+}
+
+.restaurant_data_container .restaurant_data_container_img_container img {
+    border-radius: 5px;
+    padding: 2px;
+}
+
+.restaurant_data_container div {
+    /* border: solid 1px #5C0D11; */
+    border-right: solid 1px #5C0D11;
+    padding-left: 1px;
+    padding-right: 1px;
+}
+
+.form_select_campus {
+    font-size: 16px;
+}
+
+.form_select_staff {
+    font-size: 16px;
+}
+
+.form_select_specials {
+    font-size: 16px;
+}
+
+/* ============================== */
+/* =      END Form Section      = */
+/* ============================== */

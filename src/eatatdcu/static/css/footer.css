@@ -1,0 +1,38 @@
+#footer {
+    position: absolute;
+    height: 350px;
+    width: 100%;
+    background-color: #0a294b;
+    /* background-color: #001856; */
+}
+
+#footer img {
+    width: 100%;
+    height: 150px;
+}
+
+.legal_mention {
+    margin: auto;
+    width: fit-content;
+    font-size: 14px;
+    height: 190px;
+    text-align: center;
+}
+
+#footer ul {
+    padding-top: 70px;
+}
+
+#footer ul li {
+    display: inline-block;
+    margin: 10px;
+    color: white;
+}
+
+#footer div p {
+    padding-top: 30px;
+}
+
+#footer div p a {
+    color: #337ab7;
+}

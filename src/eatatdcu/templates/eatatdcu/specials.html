@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- BOOTSTRAP LINKS -->
+   <link rel="stylesheet" href="/static/bootstrap-4.3.1-dist/css/bootstrap-grid.min.css">
+   <link rel="stylesheet" href="/static/bootstrap-4.3.1-dist/css/bootstrap.min.css">
+   <link rel="stylesheet" href="/static/bootstrap-4.3.1-dist/css/bootstrap-reboot.min.css">
+   <link rel="stylesheet" href="/static/bootstrap-4.3.1-dist/js/bootstrap.bundle.js">
+   <link rel="stylesheet" href="/static/bootstrap-4.3.1-dist/js/jquery.slim.min.js">
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Specials</title>
+</head>
+<body>
+    <!-- Add of an Header template -->
+    {% include "eatatdcu/header.html" %}
+
+    <div id="specials" style="height: 800px;color: black;
+    text-align: center;
+    top: 130px;
+    width: 100%;
+    margin-top: 115px;">
+        {% if error_msg %}
+        <b>An error has occurred</b>: {{ error_msg }}
+        {% else %}
+            {% if id_restaurant %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <img src="/static/media/restaurants/{{ id_restaurant }}.jpg" alt="" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        <b>{{ name }}</b><br>
+        Daily special : {{ daily_special }} <br>
+        ({{ time }})
+        {% endif %}
+    </div>
+
+    <!-- Add of an Footer template -->
+    {% include "eatatdcu/footer.html" %}
+</body>
+</html>

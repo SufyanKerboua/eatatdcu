@@ -1,0 +1,91 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="description" content="A simple restaurants app made with the vue js and django">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+   <!-- BOOTSTRAP LINKS -->
+   <link rel="stylesheet" href="/static/bootstrap-4.3.1-dist/css/bootstrap-grid.min.css">
+   <link rel="stylesheet" href="/static/bootstrap-4.3.1-dist/css/bootstrap.min.css">
+   <link rel="stylesheet" href="/static/bootstrap-4.3.1-dist/css/bootstrap-reboot.min.css">
+   <link rel="stylesheet" href="/static/bootstrap-4.3.1-dist/js/bootstrap.bundle.js">
+   <link rel="stylesheet" href="/static/bootstrap-4.3.1-dist/js/jquery.slim.min.js">
+
+   <link rel="stylesheet" href="/static/css/restaurants.css">
+   <title>Restaurants</title>
+</head>
+<body>
+
+   <!-- Add of an Header template -->
+   {% include "eatatdcu/header.html" %}
+
+   <script type='text/javascript'>
+      var campus_data = {{ campus_data | safe }};
+   </script>
+
+   <div id="restaurants">
+      <div id="restaurants_background">
+         <div id="carousel">
+            <img v-bind:src="currentImg" >
+            <button class="carousel_control carousel_control_left" @click="prevImage"></button>
+            <button class="carousel_control carousel_control_right" @click="nextImage"></button>
+         </div>
+      </div>
+      {% if error %}
+         {{ error }}
+      {% else %}
+         <div>
+            <h3 id="restaurants_title"> <p> {{ campus_data.name }} </p>  Restaurants</h3>
+         </div>
+         {% if restaurants %}
+         <div class="restaurants_data container-fluid">
+            <ul>
+               {% for r in restaurants %}
+                  <li>
+                     <div class="row">
+                        <h5 class="restaurant_name col-12"><b>{{ r.name }}</b>{% if r.staff_only %} (staff only!){% endif %},</h5>
+                        <div class="img-restaurant-container col-12 col-md-4">
+                           <img src="/static/media/restaurants/{{ r.restaurant_id }}.jpg" alt="" class="img-fluid">
+                        </div>
+                        <div class="text-restaurant-container col-12 col-md-7">
+                           <p><b>Location:</b> {{ r.location }}</p>
+                           <p><b>Hours:</b> {{ r.opening_hours }} - {{ r.closing_hours }}
+                              {% if r.week_end_open %}
+                                 (weekends: {{ r.week_end_opening_hours }} - {{ r.week_end_closing_hours }})
+                              {% else %}
+                                 (closed weekends)
+                              {% endif %}
+                           </p>
+                           <p><b>Clik here to discover our </b><a class="restaurant_special" href="{% url 'eatatdcu:specials' restaurant=r.name %}">Specials</a></p>
+                        </div>
+                        <div style="display: none;">
+                           <p>{{ r.name }}</b>{% if r.staff_only %} (staff only!){% endif %}, {{ r.location }}, {{ r.opening_hours }} - {{ r.closing_hours }}
+                           {% if r.week_end_open %}
+                              (weekends: {{ r.week_end_opening_hours }} - {{ r.week_end_closing_hours }})
+                           {% else %}
+                              (closed weekends)
+                           {% endif %}
+                           <a class="restaurant_special" href="{% url 'eatatdcu:specials' restaurant=r.name %}">Specials</a></p>
+                        </div>
+                     </div>
+                  </li>
+               {% endfor %}
+            </ul>
+         </div>
+         {% else %}
+            No restaurants found
+         {% endif %}
+      {% endif %}
+   </div>
+
+   <!-- Add of an Footer template -->
+   {% include "eatatdcu/footer.html" %}
+
+   <script src="/static/js/Restaurants.js"></script>
+
+</body>
+</html>

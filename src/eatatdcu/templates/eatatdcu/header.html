@@ -1,0 +1,46 @@
+<link rel="stylesheet" href="/static/css/header.css">
+
+<script type='text/javascript'>
+    // var all_option = ['Find your restaurants ', 'Location', 'Profile', 'Sign in'];
+    var all_option = ['Find your restaurants '];
+    var all_option_link = ['find_restaurants', 'location', 'profile', 'login'];
+</script>
+
+<header id="header">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dcu-color static-top">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'eatatdcu:index' %}">
+                <img id="logo_dcu" src="/static/media/Logo_dcu_restaurants.png" alt="DCU Logo Restaurants">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item" v-for="opt in all_option">
+                        <a href="{% url 'eatatdcu:index' %}find_restaurants" > [[ opt ]]</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+</header>
+
+<script>
+    var header = new Vue({
+        delimiters: ['[[', ']]'],
+        el: '#header',
+        data: {
+            all_option_link : all_option_link,
+            all_option : all_option
+        },
+        methods: {
+        },
+        mounted : function() {
+
+        }
+    });
+</script>

@@ -1,0 +1,28 @@
+<!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+<link rel="stylesheet" href="/static/css/footer.css">
+
+<script type='text/javascript'>
+    var legal_mentions = ['Privacy Policy', 'Website Accessibility', 'Site Use Agreement', 'Blog', 'FAQ', 'Reviews', 'Cookie Policy'];
+</script>
+
+<footer id="footer">
+    <img src="/static/media/footer_dcu.png" alt="">
+    <div class="legal_mention">
+        <ul>
+            <li v-for="legal_mention in legal_mentions"> [[ legal_mention ]] </li>
+        </ul>
+        <p><a style="text-decoration:none" href="http://sufyan-kerboua.ovh/" target="_blank" >Website Design by Kerboua Sufyan</a></p>
+    </div>
+</footer>
+
+<script>
+    var footer = new Vue({
+        delimiters: ['[[', ']]'],
+        el: '#footer',
+        data: {
+            legal_mentions : legal_mentions
+        },
+        methods: {
+        }
+    });
+</script>

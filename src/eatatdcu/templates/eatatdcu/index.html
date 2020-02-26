@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A simple restaurants app made with the vue js and django">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" type="image/png" href="/static/media/Logo_dcu_restaurants_2.png">
+
+    <!-- BOOTSTRAP LINKS -->
+   <link rel="stylesheet" href="/static/bootstrap-4.3.1-dist/css/bootstrap-grid.min.css">
+   <link rel="stylesheet" href="/static/bootstrap-4.3.1-dist/css/bootstrap.min.css">
+   <link rel="stylesheet" href="/static/bootstrap-4.3.1-dist/css/bootstrap-reboot.min.css">
+   <link rel="stylesheet" href="/static/bootstrap-4.3.1-dist/js/bootstrap.bundle.js">
+   <link rel="stylesheet" href="/static/bootstrap-4.3.1-dist/js/jquery.slim.min.js">
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="/static/css/home.css">
+    <title>Home</title>
+</head>
+<body>
+
+    <!-- Add of an Header template -->
+    {% include "eatatdcu/header.html" %}
+    
+    <script type='text/javascript'>
+        var all_campus = {{ campus_json | safe }};
+    </script>
+
+    <div id="home">
+        <div id="home_introduction">
+            <div class="container">
+                <div class="row card">
+                    <h1 class="col col-md-12 col-sm-12">Eat at DCU!</h1>
+                    <div class="home_introduction_about_eatatdcu col col-md-12 col-sm-12">
+                        <p>You're angry ? After a long day of work business of chemistry, you probably want to eat something good and tasty but you don't know where eat ?</p>
+                        <p>No worry, for you we have listed all restaurants from all campus of DCU</p>
+                    </div>
+                    <div class="home_search_section col col-md-12 col-sm-12">
+                        <div class="home_search_introduction">
+                            <p>Come on and search the campus where you want to eat</p>
+                        </div>
+                        <form class="home_search_form_campus" action="{% url 'eatatdcu:restaurants' %}" method="get">
+                            <div class="row">
+                                <div class="home_search_form_input_border col-12">
+                                    Campus: <input class="home_search_form_text" type="text" name="campus">
+                                </div>
+                                <div class="col-12">
+                                    <input class="home_search_form_img" type="image" src="/static/media/logo/eat.png" alt="Submit" width="48" height="48">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="all_dcu_campus">
+            <h2 class="col col-md-12 col-sm-12">Here are all DCU Campus available</h2>
+            <div class="campus" v-for="campus in all_campus">
+                <a v-bind:href="'{% url 'eatatdcu:restaurants' %}' + '?campus=' + campus.fields.name" alt="">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <h3 class="col-12"> [[ campus.fields.name ]] </h3>
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-4">
+                                    <img v-bind:src="'/static/media/dcu_campus/' + campus.pk + '.png'" alt="" class="img-fluid">
+                            </div>
+                            <div class="campus_description_holder col-12 col-sm-12 col-md-12 col-lg-8">
+                                <p> [[ campus.fields.description ]] </p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Add of an Footer template -->    
+    {% include "eatatdcu/footer.html" %}
+
+    <script>
+        var home = new Vue({
+            delimiters: ['[[', ']]'],
+            el: '#home',
+            data: {
+                message: 'Hello Vue!',
+                all_campus: all_campus
+            },
+            methods: {
+            }
+        });
+    </script>
+
+</body>
+</html>
+

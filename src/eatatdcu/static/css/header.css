@@ -1,0 +1,59 @@
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+}
+
+#logo_dcu {
+    width: 90px;
+    /* float: left;
+    margin: 15px; */
+}
+/* 
+#header {
+    background-color: #0a294b;
+    height: 115px;
+    width: 100%;
+    font-size: 24px;
+    position: fixed;
+    top: 0%;
+} */
+
+.bg-dcu-color {
+    background-color: #0a294b;
+}
+/* 
+
+#header div {
+    float: left;
+}
+
+#header .list_menu {
+    float: right;
+    margin-top: 33px;
+    margin-bottom: 33px;
+}
+#header ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #0a294b;
+}
+
+#header li {
+    float: left;
+}
+*/
+#header li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+}
+/*
+  
+#header li a:hover {
+    background-color: #111111;
+} */
